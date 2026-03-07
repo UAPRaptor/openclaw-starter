@@ -58,11 +58,63 @@ Uses ChatGPT via OAuth (no API key required — logs in through your existing Ch
 ## How to Use
 
 1. Copy the config file that matches your setup
-2. Replace all `__PLACEHOLDER__` values with your real credentials
-3. Update the `workspace` path to match your machine (replace `YOUR_USERNAME` with your actual username)
+2. Manually paste your real values over every `__PLACEHOLDER__` — see the token guide below
+3. Update the `workspace` path to match your machine (replace `YOUR_USERNAME` with your actual system username)
 4. Drop it into your OpenClaw config directory and restart OpenClaw
 
 For step-by-step install help, check out the [OpenClaw guide on SCRYPTO](https://scrypto.one) or use the OpenClaw Install Helper agent.
+
+---
+
+## Where to Find Each Token
+
+### `__YOUR_GATEWAY_TOKEN__`
+**You make this up yourself.** It's not from any service — it's just a password that OpenClaw uses to protect its local gateway. Create any long random string and paste it in. Example:
+
+```
+mySuperSecretGateway2025!
+```
+
+Or use a password manager to generate one. Just keep it consistent — whatever you put here is what OpenClaw will expect.
+
+---
+
+### `__YOUR_TELEGRAM_BOT_TOKEN__`
+This comes from Telegram's BotFather bot.
+
+1. Open Telegram and search for **@BotFather**
+2. Send the message `/newbot`
+3. Follow the prompts — pick a name and a username for your bot
+4. BotFather will reply with a token that looks like this:
+
+```
+123456789:ABCDefgh1234567890abcdefGHIJKLMNOP
+```
+
+Copy that entire string and paste it in as your `botToken`.
+
+---
+
+### `__YOUR_OPENAI_API_KEY__` *(api-chatgpt.json only)*
+This comes from your OpenAI account.
+
+1. Go to [platform.openai.com](https://platform.openai.com)
+2. Click your profile → **API Keys**
+3. Click **Create new secret key**
+4. Copy it immediately — OpenAI only shows it once
+
+It will look like:
+
+```
+sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Note: Using the API costs money per token. Make sure you have billing set up in your OpenAI account.
+
+---
+
+### `__NOT_REQUIRED_FOR_OLLAMA__` *(local configs only)*
+Leave this as-is or replace it with any dummy string — Ollama runs locally and does not require an API key. The field exists in the config format but is ignored for local models.
 
 ---
 
