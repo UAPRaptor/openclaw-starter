@@ -1,0 +1,103 @@
+{
+  "auth": {
+    "profiles": {
+      "openai-codex:default": {
+        "provider": "openai-codex",
+        "mode": "oauth"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434",
+        "apiKey": "__NOT_REQUIRED_FOR_OLLAMA__",
+        "api": "ollama",
+        "models": [
+          {
+            "id": "qwen2.5:7b-instruct",
+            "name": "qwen2.5:7b-instruct (Ollama)",
+            "api": "ollama",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 32768,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "openai-codex/gpt-5.2-codex",
+        "fallbacks": [
+          "openai-codex/gpt-5.1-chat-latest",
+          "openai-codex/gpt-5.1-codex",
+          "openai-codex/gpt-5.2-chat-latest",
+          "openai-codex/gpt-5-chat-latest",
+          "openai-codex/gpt-5-codex",
+          "ollama/qwen2.5:7b-instruct"
+        ]
+      },
+      "models": {
+        "openai-codex/gpt-5.2-codex": {},
+        "openai-codex/gpt-5.1-chat-latest": {},
+        "openai-codex/gpt-5.1-codex": {},
+        "openai-codex/gpt-5.2-chat-latest": {},
+        "openai-codex/gpt-5-chat-latest": {},
+        "openai-codex/gpt-5-codex": {},
+        "ollama/qwen2.5:7b-instruct": {}
+      },
+      "workspace": "/Users/YOUR_USERNAME/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 1,
+      "subagents": {
+        "maxConcurrent": 1
+      }
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "pairing",
+      "botToken": "__YOUR_TELEGRAM_BOT_TOKEN__",
+      "groupPolicy": "allowlist",
+      "streaming": "off"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token",
+      "token": "__YOUR_GATEWAY_TOKEN__"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      }
+    }
+  }
+}
