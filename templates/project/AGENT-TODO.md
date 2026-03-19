@@ -1,0 +1,48 @@
+# AGENT-TODO — [PROJECT NAME]
+
+This file is the authoritative task backlog for this project.
+All agents read this file at the start of every session and update it after every commit.
+
+---
+
+## Priority Queue
+
+### 1. Specification and Planning
+
+- [ ] [D2] PM: Write initial `spec.md` — product goals, features, user flows
+- [ ] [D2] PM: Create `milestones.md` — numbered milestones with acceptance criteria
+- [ ] [D3] Architect: Review spec and write `implementation-plan.md`
+- [ ] [D2] Architect: Write `architecture.md` — stack, data models, folder structure
+
+### 2. Milestone 1 — Project Skeleton
+
+- [ ] [D2] Builder: Implement Milestone 1 per `implementation-plan.md`
+- [ ] [D2] Builder: Produce build `v0.1` in `builds/build_v0.1/`
+- [ ] [D2] QA: Validate Milestone 1 build against acceptance criteria
+- [ ] [D1] PM: Update `status.md` — Milestone 1 complete
+
+### 3. Testing and Release
+
+- [ ] [D3] QA: Full regression test, create tickets for any failures
+- [ ] [D2] Builder: Fix all QA-failed tickets
+- [ ] [D2] DevOps: Prepare release build `v1.0`
+- [ ] [D1] PM: Write overnight report and release summary
+
+---
+
+## Ticket Backlog
+
+Open tickets are tracked in `tickets/open/`. **All new work items should be created as tickets**, not TODO entries. Use ticket types:
+- **TASK-NNN** — general work items (replaces TODO entries)
+- **FEAT-NNN** — new feature requests
+- **BUG-NNN** — defects and regressions
+- **QUESTION-NNN** — clarification needed
+- **EPIC-NNN** — groups related tickets into larger initiatives
+
+---
+
+## Completed
+
+| Date | Agent | Item |
+|------|-------|------|
+| [DATE] | PM | Project initialized |

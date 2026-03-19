@@ -1,6 +1,6 @@
-# OpenClaw Starter Configs
+# OpenClaw Starter Kit
 
-A collection of working reference configs for getting OpenClaw up and running. Each file covers a different setup scenario. Pick the one that matches how you want to run your AI model and go from there.
+A collection of working reference configs, project templates, and ticket workflows for getting OpenClaw up and running. Pick the config that matches your setup, use the templates to structure your projects, and track work with tickets.
 
 All sensitive values have been replaced with clearly labeled placeholders like `__YOUR_TELEGRAM_BOT_TOKEN__` — swap those out with your real values before using.
 
@@ -118,8 +118,81 @@ Leave this as-is or replace it with any dummy string — Ollama runs locally and
 
 ---
 
+## Project Templates
+
+Ready-to-use markdown files for structuring an agent-managed project. Copy the `templates/project/` folder into your workspace's `projects/[name]/` directory.
+
+```
+templates/project/
+├── spec.md           Product specification (goals, features, user flows)
+├── milestones.md     6-milestone delivery plan with acceptance criteria
+├── status.md         Live project status tracker
+└── AGENT-TODO.md     Agent task backlog (guides agents toward ticket workflow)
+```
+
+**How to use:**
+1. Create a project folder: `mkdir -p projects/my-app/tickets/open projects/my-app/tickets/closed`
+2. Copy the templates: `cp templates/project/* projects/my-app/`
+3. Replace `[PROJECT NAME]` and `[DATE]` placeholders
+4. Agents will read these files at session start and update them as they work
+
+---
+
+## Ticket System
+
+All work items — bugs, features, tasks, questions — are tracked as ticket files in `tickets/open/` and `tickets/closed/`. This replaces ad-hoc TODO lists with a structured, enterprise-style workflow.
+
+### Ticket Types
+
+| Type | Prefix | When to use |
+|------|--------|-------------|
+| **BUG** | `BUG-001.md` | Defects, regressions, things that are broken |
+| **FEAT** | `FEAT-001.md` | New feature requests |
+| **TASK** | `TASK-001.md` | General work items (replaces TODO entries) |
+| **QUESTION** | `QUESTION-001.md` | Clarification needed before work can proceed |
+| **EPIC** | `EPIC-001.md` | Groups related tickets into a larger initiative |
+
+### Ticket Lifecycle
+
+```
+proposed → ready → in-progress → fixed → passed → released
+                 → blocked
+                              → qa-failed → fixed (loop)
+```
+
+### How to use
+
+1. Copy the right template from `templates/tickets/` to `tickets/open/`
+2. Rename it with the next number: `BUG-001.md`, `FEAT-002.md`, etc.
+3. Fill in the fields (title, description, priority, severity for bugs)
+4. Agents update **Status** as work progresses
+5. When done, move from `tickets/open/` to `tickets/closed/`
+
+Templates are in:
+
+```
+templates/tickets/
+├── BUG-template.md       Bug report (includes severity, steps to reproduce)
+├── FEAT-template.md      Feature request
+├── TASK-template.md      General work item
+├── QUESTION-template.md  Clarification needed
+└── EPIC-template.md      Initiative grouping child tickets
+```
+
+### Priority Levels
+
+| Level | Meaning |
+|-------|---------|
+| D1 | Critical — blocks everything, fix immediately |
+| D2 | High — important, fix before next milestone |
+| D3 | Medium — normal priority |
+| D4 | Low — nice to have, do when time allows |
+
+---
+
 ## Resources
 
 - [OpenClaw](https://openclaw.ai) — official site and documentation
 - [Ollama](https://ollama.com) — run local AI models
 - [SCRYPTO](https://scrypto.one) — community hub where these configs came from
+- [OpenClaw Mission Control](https://github.com/UAPRaptor/OpenClaw-Multi-Agent-Workflow) — installer, monitor dashboard, and agent management
